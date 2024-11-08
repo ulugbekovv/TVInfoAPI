@@ -1,9 +1,9 @@
 from fastapi import FastAPI
-from services.channels import all_channels
-from services.category import category_channels
-from services.categories import all_categories
-from services.now import now
-from services.info import channel
+from .services.channels import all_channels
+from .services.category import category_channels
+from .services.categories import all_categories
+from .services.now import now
+from .services.info import channel
 from pydantic import BaseModel
 
 app = FastAPI(
