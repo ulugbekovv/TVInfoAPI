@@ -5,6 +5,7 @@ from .services.categories import all_categories
 from .services.now import now
 from .services.info import channel
 from pydantic import BaseModel
+from fastapi.responses import RedirectResponse
 
 app = FastAPI(
     title="TVInfoAPI",
@@ -27,6 +28,10 @@ class ChannelRequest(BaseModel):
 class ChannelRequest2(BaseModel):
     channel_url: str
     date: str
+
+@app.get("/", include_in_schema=False)
+async def root():
+    return RedirectResponse(url="/docs")
 
 @app.get("/channels", summary="Получить список всех каналов", description="Возвращает список всех доступных каналов")
 async def channels_root():
